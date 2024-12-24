@@ -6,6 +6,8 @@
 }
 
 body {
+  margin: auto;
+  max-width: 500px;
   min-height: 400px;
   text-align: center;
   border: 60px solid;
