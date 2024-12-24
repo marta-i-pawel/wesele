@@ -6,8 +6,9 @@
 }
 
 body {
+  height: calc(100vh - 120px);
+  min-height: 400px;
   text-align: center;
-  min-height: 100vh;
   border: 60px solid;
   border-image: url("images/border.png") 100 repeat;
 }
