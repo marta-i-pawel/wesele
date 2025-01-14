@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 body {
   margin: auto;
   max-width: 500px;
