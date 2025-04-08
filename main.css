@@ -29,6 +29,10 @@
   text-align: center;
 }
 
+.scrollable {
+  overflow: auto;
+}
+
 body {
   margin: auto;
   max-width: 500px;
@@ -58,6 +62,7 @@ p {
 }
 
 table {
+  overflow-x: auto;
   width: 100%;
   font-family: "Winky Sans", sans-serif;
   font-optical-sizing: auto;
