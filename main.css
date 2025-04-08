@@ -5,15 +5,67 @@
   font-style: normal;
 }
 
+.winky-sans {
+  font-family: "Winky Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
 .nowrap {
   white-space: nowrap;
+}
+
+.center {
+  text-align: center;
 }
 
 body {
   margin: auto;
   max-width: 500px;
   min-height: 400px;
-  text-align: center;
+  text-align: left;
   border: 60px solid;
+  font-size: 26px;
   border-image: url("images/border.png") 100 repeat;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+p {
+  font-family: "Winky Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  font-family: "Winky Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+td, tr {
+  padding: 10px;
 }
