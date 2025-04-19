@@ -81,8 +81,19 @@
   transform: translateY(10px);
 }
 
+.clickable:disabled+label {
+  filter: drop-shadow(0 0 0 rgb(249, 187, 177));
+  color: gray;
+  transform: translateY(10px);
+}
+
 input[type="file"] {
   display: none;
+}
+
+input[type="text"] {
+  text-align: center;
+  font-size: 20px;
 }
 
 body {

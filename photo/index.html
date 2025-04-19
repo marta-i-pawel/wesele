@@ -26,20 +26,16 @@
         
         <div class="center">
             <label id="signatureLabel" for="signatureInput" class="spiral-border-small-filled mansalva-regular editable">
-                Podpis
-                <input id="signatureInput" type="text" multiple>
+                <span style="padding-right: 10px;">Podpis</span>
+                <input id="signatureInput" type="text" size="16" maxlength="16" class="mansalva-regular">
             </label>
             <br/>
 
+            <input id="filesInput" type="file" accept="image/*, video/*" class="clickable" multiple>            
             <label id="filesLabel" for="filesInput" class="spiral-border-small-filled mansalva-regular clickable">
                 Wybierz Zdjęcia
             </label>
-            <input id="filesInput" type="file" multiple>            
             <br/>
-            
-            <button id="sendButton" class="spiral-border-small-filled mansalva-regular clickable">
-                Wyślij
-            </button>
         </div>
 
         <br/>

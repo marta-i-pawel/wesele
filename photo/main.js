@@ -1,4 +1,3 @@
-var sendButton = document.getElementById("sendButton")
 var filesLabel = document.getElementById("filesLabel")
 var filesInput = document.getElementById("filesInput")
 var signatureInput = document.getElementById("signatureInput")
@@ -9,26 +8,30 @@ var sendingInProgress = false
 
 updateSendLabel()
 
+function chechIsEnabled() {
+    return signatureSelected && !sendingInProgress
+}
+
 function updateSendLabel() {
-    var isEnabled = imagesSelected && signatureSelected && !sendingInProgress
-    var wasEnabled = !sendButton.hasAttribute("disabled")
+    var isEnabled = chechIsEnabled()
+    var wasEnabled = !filesInput.hasAttribute("disabled")
 
     if (wasEnabled != isEnabled) {
         if (wasEnabled) {
-            sendButton.setAttribute("disabled", "")
+            filesInput.setAttribute("disabled", "")
         } else {
-            sendButton.removeAttribute("disabled")
+            filesInput.removeAttribute("disabled")
         }
     }
 
     if (!signatureSelected) {
-        sendButton.innerHTML = "Nie wybrano podpisu"
+        filesLabel.innerHTML = "Nie wybrano podpisu"
     } else if (!imagesSelected) {
-        sendButton.innerHTML = "Nie wybrano zdjęć"
+        filesLabel.innerHTML = "Wybierz zdjęcia"
     } else if (sendingInProgress) {
         // wait
     } else {
-        sendButton.innerHTML = "Wyślij"
+        filesLabel.innerHTML = "Wyślij"
     }
 }
 
@@ -42,9 +45,12 @@ function getFileString(count) {
 async function sendFiles(files) {
     var count = files.length
     var index = 0
+
     sendingInProgress = true
+    updateSendLabel()
+
     while (index < count) {
-        sendButton.innerHTML = "Wysyłanie " + (index + 1) + "/" + count
+        filesLabel.innerHTML = "Wysyłanie " + (index + 1) + "/" + count
 
         var data = new FormData()
         data.append('image', files[index])
@@ -67,24 +73,23 @@ async function sendFiles(files) {
 
         index += 1;
     }
-    sendButton.innerHTML = "Wysłano!";
+    
     sendingInProgress = false
+    updateSendLabel()
+
+    filesLabel.innerHTML = "Wysłano! Kolejne?";
 }
-
-sendButton.addEventListener("pointerdown", function (e) {
-    if (sendButton.hasAttribute("disabled")) {
-        return
-    }
-
-    sendButton.setAttribute("disabled", "")
-    sendFiles(filesInput.files)
-})
 
 filesInput.addEventListener("change", function (e) {
     var count = e.target.files.length
     filesLabel.innerHTML = "Wybrano " + count + " " + getFileString(count)
     imagesSelected = count > 0
+    
     updateSendLabel()
+
+    if (chechIsEnabled()) {
+        sendFiles(e.target.files)
+    }
 })
 
 signatureInput.addEventListener("change", function (e) {
