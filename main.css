@@ -33,14 +33,44 @@
   overflow: auto;
 }
 
+.spiral-border {
+  border: 60px solid;
+  border-image: url("images/border.png") 100 repeat;
+}
+
+.spiral-border-small-filled {
+  border: 40px solid;
+  border-image: url("images/border-filled.png") 100 repeat;
+}
+
+button {
+  background-color: white;
+  background-clip: padding-box;
+  filter: drop-shadow(0 10px 0 rgb(249, 187, 177));
+  color: black;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+
+button:hover {
+  filter: drop-shadow(0 13px 0 rgb(249, 187, 177));
+  transform: translateY(-3px);
+}
+
+button:active {
+  filter: drop-shadow(0 5px 0 rgb(249, 187, 177));
+  transform: translateY(5px);
+}
+
 body {
   margin: auto;
   max-width: 500px;
   min-height: 400px;
   text-align: left;
-  border: 60px solid;
   font-size: 26px;
-  border-image: url("images/border.png") 100 repeat;
 }
 
 h1 {
