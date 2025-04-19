@@ -43,6 +43,17 @@
   border-image: url("images/border-filled.png") 100 repeat;
 }
 
+.editable {
+  background-color: white;
+  background-clip: padding-box;
+  filter: drop-shadow(0 10px 0 rgb(249, 187, 177));
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
+
 .clickable {
   background-color: white;
   background-clip: padding-box;
@@ -51,7 +62,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .clickable:hover {
@@ -62,6 +73,12 @@
 .clickable:active {
   filter: drop-shadow(0 5px 0 rgb(249, 187, 177));
   transform: translateY(5px);
+}
+
+.clickable:disabled {
+  filter: drop-shadow(0 0 0 rgb(249, 187, 177));
+  color: gray;
+  transform: translateY(10px);
 }
 
 input[type="file"] {
