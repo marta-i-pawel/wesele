@@ -45,6 +45,7 @@ function getFileString(count) {
 async function sendFiles(files) {
     var count = files.length
     var index = 0
+    var errors = 0
 
     sendingInProgress = true
     updateSendLabel()
@@ -67,24 +68,33 @@ async function sendFiles(files) {
                 body: data
             });
             console.log(response)
+            if (!response.ok) {
+                errors += 1;
+            }
         } catch (error) {
             console.error(error)
+            errors += 1;
         }
 
         index += 1;
     }
-    
+
     sendingInProgress = false
     updateSendLabel()
 
-    filesLabel.innerHTML = "Wysłano! Kolejne?";
+    if (errors == 0) {
+        filesLabel.innerHTML = "Wysłano! Kolejne?";
+    }
+    else {
+        filesLabel.innerHTML = "Błąd (" + (errors + 1) + "/" + count + ")! Spróbuj ponownie";
+    }
 }
 
 filesInput.addEventListener("change", function (e) {
     var count = e.target.files.length
     filesLabel.innerHTML = "Wybrano " + count + " " + getFileString(count)
     imagesSelected = count > 0
-    
+
     updateSendLabel()
 
     if (chechIsEnabled()) {
@@ -100,3 +110,10 @@ signatureInput.addEventListener("change", function (e) {
     }
     updateSendLabel()
 })
+
+
+signatureInput.addEventListener('keyup', function (e) {
+    if (e.code === 'Enter') {
+        signatureInput.blur();
+    }
+});
