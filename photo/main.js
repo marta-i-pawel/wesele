@@ -113,7 +113,7 @@ signatureInput.addEventListener("change", function (e) {
 
 
 signatureInput.addEventListener('keyup', function (e) {
-    if (e.code === 'Enter') {
+    if (e.key === 'Enter') {
         signatureInput.blur();
     }
 });
